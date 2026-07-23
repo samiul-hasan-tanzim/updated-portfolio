@@ -8,7 +8,7 @@ export interface IContact extends Document {
   createdAt: Date;
 }
 
-const collectionName = process.env.COLLECTION_NAME || "messages";
+const collectionName = process.env.COLLECTION_NAME || "contacts";
 
 const ContactSchema = new Schema<IContact>(
   {
