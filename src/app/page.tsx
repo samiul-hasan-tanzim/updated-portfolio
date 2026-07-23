@@ -7,6 +7,7 @@ import { Navbar } from "@/components/cosmic/Navbar";
 import { Hero } from "@/components/cosmic/Hero";
 import { About } from "@/components/cosmic/About";
 import { Skills } from "@/components/cosmic/Skills";
+import { Education } from "@/components/cosmic/Education";
 import { Journey } from "@/components/cosmic/Journey";
 import { Projects } from "@/components/cosmic/Projects";
 import { Contact } from "@/components/cosmic/Contact";
@@ -23,6 +24,7 @@ export default function Home() {
         <div style={{ animation: "driftFloat 8s ease-in-out infinite" }}><Hero /></div>
         <div style={{ animation: "driftGlide 10s ease-in-out infinite" }}><About /></div>
         <div><Skills /></div>
+        <div style={{ animation: "driftUp 8s ease-in-out infinite" }}><Education /></div>
         <div style={{ animation: "driftDiagonal 11s ease-in-out infinite" }}><Journey /></div>
         <div style={{ animation: "driftLeft 7s ease-in-out infinite" }}><Projects /></div>
         <div style={{ animation: "driftRight 9s ease-in-out infinite" }}><Contact /></div>

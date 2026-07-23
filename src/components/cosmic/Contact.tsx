@@ -1,7 +1,7 @@
 import { useActionState, useEffect, useState, useRef } from "react";
 import { Reveal } from "./Reveal";
 import { MouseParallax } from "./MouseParallax";
-import { Send, Mail, MapPin, Github, Twitter, Linkedin, Loader2, Satellite, X } from "lucide-react";
+import { Send, Mail, MapPin, Phone, Github, Twitter, Linkedin, Loader2, Satellite, X } from "lucide-react";
 import { submitContact } from "@/app/actions/contact";
 
 function MediumIcon({ size = 16 }: { size?: number }) {
@@ -64,6 +64,15 @@ export function Contact() {
                   <div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground">Location</div>
                     <div className="font-mono text-sm">Bangladesh · Remote</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-[var(--nebula-pink)] to-[var(--cosmic-purple)] flex items-center justify-center">
+                    <Phone size={16} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
+                    <div className="font-mono text-sm">+880 1784 468092</div>
                   </div>
                 </div>
               </div>
