@@ -61,7 +61,10 @@ export function Hero() {
         </div>
 
         {/* Portrait with orbits */}
-        <div className="relative flex items-center justify-center h-[500px] lg:h-[600px]">
+        <div
+          className="relative flex items-center justify-center h-[500px] lg:h-[600px]"
+          style={{ animation: "driftFloat 9s ease-in-out infinite" }}
+        >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="orbit-ring" style={{ width: 520, height: 520 }} />
             <div

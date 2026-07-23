@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { MouseParallax } from "./MouseParallax";
 import { BookOpen, FileJson, Layers, Layout, Database, Rocket, Sparkles } from "lucide-react";
 
 const items = [
@@ -75,7 +76,14 @@ export function Journey() {
                 <Reveal key={i}>
                   <div className="relative grid md:grid-cols-2 gap-8 items-center">
                     <div className={`hidden md:block ${left ? "" : "md:order-2"}`}>
-                      <div className={`card-cosmic ${left ? "md:mr-10" : "md:ml-10"}`}>
+                      <MouseParallax factor={6 + i}>
+                        <div
+                          className={`card-cosmic ${left ? "md:mr-10" : "md:ml-10"}`}
+                          style={{
+                            animation: `${["driftFloat", "driftSway", "driftLeft", "driftDiagonal", "driftRight", "driftUp", "driftGlide"][i]} ${6 + i * 0.4}s ease-in-out infinite`,
+                            animationDelay: `${i * 0.3}s`,
+                          }}
+                        >
                         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--cyan-glow)]">
                           <it.icon size={14} />
                           {it.year}
@@ -83,12 +91,19 @@ export function Journey() {
                         <h3 className="mt-2 font-display text-xl font-bold">{it.title}</h3>
                         <div className="text-sm text-muted-foreground">{it.org}</div>
                         <p className="mt-3 text-sm text-white/80">{it.desc}</p>
-                      </div>
+                        </div>
+                      </MouseParallax>
                     </div>
 
                     {/* Mobile card */}
                     <div className="md:hidden ml-12">
-                      <div className="card-cosmic">
+                      <MouseParallax factor={4 + i}>
+                        <div
+                          className="card-cosmic"
+                          style={{
+                            animation: `${["driftUp", "driftGlide", "driftSway", "driftLeft", "driftDiagonal", "driftRight", "driftFloat"][i]} ${5 + i * 0.5}s ease-in-out infinite`,
+                          }}
+                        >
                         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--cyan-glow)]">
                           <it.icon size={14} />
                           {it.year}
@@ -96,7 +111,8 @@ export function Journey() {
                         <h3 className="mt-2 font-display text-xl font-bold">{it.title}</h3>
                         <div className="text-sm text-muted-foreground">{it.org}</div>
                         <p className="mt-3 text-sm text-white/80">{it.desc}</p>
-                      </div>
+                        </div>
+                      </MouseParallax>
                     </div>
 
                     {/* Node */}

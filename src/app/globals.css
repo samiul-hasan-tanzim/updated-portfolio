@@ -184,35 +184,7 @@
   66% { transform: translate(-30px, 50px) scale(0.95); }
 }
 
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 6px 2px white;
-  animation: shoot 6s linear infinite;
-}
-.shooting-star::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 1px;
-  background: linear-gradient(90deg, white, transparent);
-  transform: translateX(-100%);
-}
-.shooting-star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; }
-.shooting-star:nth-child(2) { top: 30%; left: 90%; animation-delay: 2s; }
-.shooting-star:nth-child(3) { top: 60%; left: 70%; animation-delay: 4s; }
 
-@keyframes shoot {
-  0% { transform: translate(0, 0) rotate(-135deg); opacity: 0; }
-  10% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { transform: translate(-800px, 800px) rotate(-135deg); opacity: 0; }
-}
 
 /* ============ GLASSMORPHISM ============ */
 @utility glass {
@@ -463,4 +435,65 @@
     linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
     linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+/* ============ DRIFT FLOATING ============ */
+@keyframes driftLeft {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-6px) translateY(-4px); }
+  50% { transform: translateX(-3px) translateY(2px); }
+  75% { transform: translateX(4px) translateY(-3px); }
+}
+@keyframes driftRight {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(6px) translateY(-3px); }
+  50% { transform: translateX(3px) translateY(4px); }
+  75% { transform: translateX(-4px) translateY(-2px); }
+}
+@keyframes driftUp {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-3px) translateY(-6px); }
+  50% { transform: translateX(4px) translateY(-3px); }
+  75% { transform: translateX(-2px) translateY(4px); }
+}
+@keyframes driftDiagonal {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(7px) translateY(-5px); }
+  50% { transform: translateX(-5px) translateY(-8px); }
+  75% { transform: translateX(-7px) translateY(3px); }
+}
+@keyframes driftSway {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(5px) translateY(-3px) rotate(0.5deg); }
+  50% { transform: translateX(-5px) translateY(3px) rotate(-0.5deg); }
+  75% { transform: translateX(3px) translateY(-5px) rotate(0.3deg); }
+}
+@keyframes driftFloat {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  33% { transform: translateX(-4px) translateY(-7px); }
+  66% { transform: translateX(6px) translateY(-2px); }
+}
+@keyframes driftGlide {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-8px) translateY(2px); }
+  50% { transform: translateX(0) translateY(6px); }
+  75% { transform: translateX(8px) translateY(-2px); }
+}
+
+/* Modal custom scrollbar */
+.modal-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: oklch(0.7 0.15 200 / 0.3);
+  border-radius: 999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.7 0.15 200 / 0.6);
+  box-shadow: 0 0 8px oklch(0.7 0.2 200 / 0.4);
 }

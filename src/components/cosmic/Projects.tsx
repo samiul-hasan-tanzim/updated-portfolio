@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { MouseParallax } from "./MouseParallax";
 import { ProjectModal, ModalSection, ModalTags, ModalLinks } from "./ProjectModal";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
@@ -98,11 +99,16 @@ export function Projects() {
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
-              <article
-                className="card-cosmic group h-full flex flex-col cursor-pointer"
-                data-cursor="hover"
-                onClick={() => setSelected(p)}
-              >
+              <MouseParallax factor={7 + i * 2}>
+                <article
+                  className="card-cosmic group h-full flex flex-col cursor-pointer"
+                  data-cursor="hover"
+                  onClick={() => setSelected(p)}
+                  style={{
+                    animation: `${["driftSway", "driftGlide", "driftDiagonal"][i]} ${6 + i * 0.5}s ease-in-out infinite`,
+                    animationDelay: `${i * 0.3}s`,
+                  }}
+                >
                 <div className="relative overflow-hidden rounded-xl aspect-[16/10] -mx-2 -mt-2 mb-5">
                   <img
                     src={p.img}
@@ -150,7 +156,8 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </article>
+                </article>
+              </MouseParallax>
             </Reveal>
           ))}
         </div>

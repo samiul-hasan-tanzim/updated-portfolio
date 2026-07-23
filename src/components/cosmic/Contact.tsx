@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { MouseParallax } from "./MouseParallax";
 import { Send, Mail, MapPin, Github, Twitter, Linkedin } from "lucide-react";
 
 function MediumIcon({ size = 16 }: { size?: number }) {
@@ -30,8 +31,12 @@ export function Contact() {
 
         <div className="mt-16 grid lg:grid-cols-5 gap-6">
           <Reveal className="lg:col-span-2">
-            <div className="card-cosmic h-full">
-              <div className="font-mono text-xs uppercase tracking-widest text-[var(--cyan-glow)]">Direct Coordinates</div>
+            <MouseParallax factor={7}>
+              <div
+                className="card-cosmic h-full"
+                style={{ animation: "driftDiagonal 8s ease-in-out infinite" }}
+              >
+                <div className="font-mono text-xs uppercase tracking-widest text-[var(--cyan-glow)]">Direct Coordinates</div>
               <div className="mt-6 space-y-5">
                 <div className="flex items-start gap-3">
                   <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-[var(--cyan-glow)] to-[var(--neon-blue)] flex items-center justify-center">
@@ -75,13 +80,16 @@ export function Contact() {
                   ))}
                 </div>
               </div>
-            </div>
+              </div>
+            </MouseParallax>
           </Reveal>
 
           <Reveal delay={100} className="lg:col-span-3">
-            <form
-              className="card-cosmic h-full"
-              onSubmit={(e) => {
+            <MouseParallax factor={9}>
+              <form
+                className="card-cosmic h-full"
+                style={{ animation: "driftSway 9s ease-in-out infinite" }}
+                onSubmit={(e) => {
                 e.preventDefault();
                 setSent(true);
                 setTimeout(() => setSent(false), 3000);
@@ -114,7 +122,8 @@ export function Contact() {
                   Transmit <Send size={14} />
                 </button>
               </div>
-            </form>
+              </form>
+            </MouseParallax>
           </Reveal>
         </div>
       </div>

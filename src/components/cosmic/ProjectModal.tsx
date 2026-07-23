@@ -1,4 +1,5 @@
 import { useEffect, useCallback, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { X, ExternalLink, Github } from "lucide-react";
 
 export function ProjectModal({
@@ -30,7 +31,7 @@ export function ProjectModal({
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       onClick={(e) => {
@@ -42,7 +43,7 @@ export function ProjectModal({
         onClick={onClose}
       />
       <div
-        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto glass-strong rounded-2xl p-6 sm:p-8 animate-in fade-in zoom-in-95 duration-300"
+        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto modal-scroll glass-strong rounded-2xl p-6 sm:p-8 animate-in fade-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -54,7 +55,8 @@ export function ProjectModal({
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
