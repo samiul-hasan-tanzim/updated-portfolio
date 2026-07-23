@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { MouseParallax } from "./MouseParallax";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -35,15 +36,13 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-2" : "py-4"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"
+        }`}
     >
       <div className={`mx-auto max-w-7xl px-4 sm:px-6`}>
         <div
-          className={`flex items-center justify-between rounded-full px-4 sm:px-6 py-3 transition-all ${
-            scrolled ? "glass-strong" : "glass"
-          }`}
+          className={`flex items-center justify-between rounded-full px-4 sm:px-6 py-3 transition-all ${scrolled ? "glass-strong" : "glass"
+            }`}
         >
           <a href="#home" className="flex items-center gap-2 font-display font-bold tracking-widest text-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-[var(--cyan-glow)] shadow-[0_0_10px_var(--cyan-glow)]" />
@@ -54,26 +53,25 @@ export function Navbar() {
             {links.map((l) => {
               const isActive = active === l.href.slice(1);
               return (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive ? "text-white" : "text-muted-foreground hover:text-white"
-                  }`}
-                >
-                  {l.label}
-                  <span
-                    className={`absolute left-4 right-4 -bottom-0.5 h-px bg-gradient-to-r from-[var(--cyan-glow)] via-[var(--neon-blue)] to-[var(--cosmic-purple)] transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0"
-                    }`}
-                  />
-                </a>
+                <MouseParallax key={l.href} factor={4}>
+                  <a
+                    href={l.href}
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors ${isActive ? "text-white" : "text-muted-foreground hover:text-white"
+                      }`}
+                  >
+                    {l.label}
+                    <span
+                      className={`absolute left-4 right-4 -bottom-0.5 h-px bg-gradient-to-r from-[var(--cyan-glow)] via-[var(--neon-blue)] to-[var(--cosmic-purple)] transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0"
+                        }`}
+                    />
+                  </a>
+                </MouseParallax>
               );
             })}
           </nav>
 
           <a href="#contact" className="hidden md:inline-flex btn-outline-neon !py-2 !px-4 !text-xs">
-            Let's Talk
+            Let&apos;s Talk
           </a>
 
           <button
