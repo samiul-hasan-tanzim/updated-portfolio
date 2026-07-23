@@ -1,4 +1,4 @@
-# Nova Vega — Portfolio
+# Samiul Hasan — Portfolio
 
 An interactive cosmic-themed portfolio website built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
 
