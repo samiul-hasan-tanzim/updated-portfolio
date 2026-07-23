@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { Reveal } from "./Reveal";
 import { MouseParallax } from "./MouseParallax";
 
@@ -24,7 +25,7 @@ export function Skills() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto">
-            <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--cyan-glow)]">// Arsenal</div>
+            <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-glow">// Arsenal</div>
             <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold">
               Tools of the <span className="text-gradient">trade</span>.
             </h2>
@@ -46,15 +47,15 @@ export function Skills() {
                   }}
                 >
                   <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-display font-semibold text-lg">{s.name}</div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{s.group}</div>
+                    <div>
+                      <div className="font-display font-semibold text-lg">{s.name}</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{s.group}</div>
+                    </div>
+                    <div className="font-mono text-cyan-glow text-lg font-bold">{s.level}%</div>
                   </div>
-                  <div className="font-mono text-[var(--cyan-glow)] text-lg font-bold">{s.level}%</div>
-                </div>
-                <div className="mt-4 skill-bar">
-                  <span style={{ width: `${s.level}%` }} />
-                </div>
+                  <div className="mt-4 skill-bar">
+                    <span style={{ width: `${s.level}%` }} />
+                  </div>
                 </div>
               </MouseParallax>
             </Reveal>
@@ -66,7 +67,7 @@ export function Skills() {
             {stack.map((t, i) => (
               <MouseParallax key={t} factor={4 + (i % 5) * 2}>
                 <span
-                  className="glass rounded-full px-4 py-2 text-sm font-mono transition-all hover:border-[var(--cyan-glow)]/40 hover:text-[var(--cyan-glow)] hover:shadow-[0_0_20px_-5px_var(--cyan-glow)] cursor-default"
+                  className="glass rounded-full px-4 py-2 text-sm font-mono transition-all hover:border-(--cyan-glow)/40 hover:text-cyan-glow hover:shadow-[0_0_20px_-5px_var(--cyan-glow)] cursor-default"
                   data-cursor="hover"
                   style={{
                     animation: `${["driftFloat", "driftSway", "driftLeft", "driftUp", "driftRight", "driftDiagonal", "driftGlide"][i % 7]} ${14 + (i % 5) * 1.2}s ease-in-out infinite`,

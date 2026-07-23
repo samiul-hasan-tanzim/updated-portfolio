@@ -46,7 +46,7 @@ export function Navbar() {
             }`}
         >
           <a href="#home" className="flex items-center gap-2 font-display font-bold tracking-widest text-sm">
-            <span className="inline-block h-2 w-2 rounded-full bg-[var(--cyan-glow)] shadow-[0_0_10px_var(--cyan-glow)]" />
+            <span className="inline-block h-2 w-2 rounded-full bg-cyan-glow shadow-[0_0_10px_var(--cyan-glow)]" />
             SAMIUL<span className="text-gradient">HASAN</span>
           </a>
 
@@ -62,7 +62,7 @@ export function Navbar() {
                   >
                     {l.label}
                     <span
-                      className={`absolute left-4 right-4 -bottom-0.5 h-px bg-gradient-to-r from-[var(--cyan-glow)] via-[var(--neon-blue)] to-[var(--cosmic-purple)] transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0"
+                      className={`absolute left-4 right-4 -bottom-0.5 h-px bg-linear-to-r from-cyan-glow via-neon-blue to-cosmic-purple transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0"
                         }`}
                     />
                   </a>
@@ -71,7 +71,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <a href="#contact" className="hidden md:inline-flex btn-outline-neon !py-2 !px-4 !text-xs">
+          <a href="#contact" className="hidden md:inline-flex btn-outline-neon py-2! px-4! text-xs!">
             Let&apos;s Talk
           </a>
 

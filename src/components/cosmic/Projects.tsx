@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from "react";
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { MouseParallax } from "./MouseParallax";
 import { ProjectModal, ModalSection, ModalTags, ModalLinks } from "./ProjectModal";
@@ -85,9 +87,9 @@ export function Projects() {
         <Reveal>
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--cyan-glow)]">// Selected Work</div>
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-glow">// Selected Work</div>
               <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold">
-                Projects <span className="text-gradient">I've built</span>.
+                Projects <span className="text-gradient">I&apos;ve built</span>.
               </h2>
             </div>
             <a href="#contact" className="btn-outline-neon">
@@ -109,53 +111,55 @@ export function Projects() {
                     animationDelay: `${i * 0.3}s`,
                   }}
                 >
-                <div className="relative overflow-hidden rounded-xl aspect-[16/10] -mx-2 -mt-2 mb-5">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    loading="lazy"
-                    width={1024}
-                    height={640}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a
-                      href={p.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-9 w-9 grid place-items-center rounded-full glass hover:text-[var(--cyan-glow)]"
-                      aria-label="Live demo"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink size={14} />
-                    </a>
-                    <a
-                      href={p.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-9 w-9 grid place-items-center rounded-full glass hover:text-[var(--cyan-glow)]"
-                      aria-label="Repository"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={14} />
-                    </a>
+                  <div className="relative overflow-hidden rounded-xl aspect-16/10 -mx-2 -mt-2 mb-5">
+                    <Image
+                      src={p.img}
+                      alt={p.title}
+                      width={1024}
+                      height={640}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <a
+                        href={p.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="h-9 w-9 grid place-items-center rounded-full glass hover:text-cyan-glow"
+                        aria-label="Live demo"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink size={14} />
+                      </a>
+                      <a
+                        href={p.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="h-9 w-9 grid place-items-center rounded-full glass hover:text-cyan-glow"
+                        aria-label="Repository"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github size={14} />
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--cyan-glow)]">
-                  {p.tagline}
-                </div>
-                <h3 className="mt-1 font-display text-2xl font-bold">{p.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground flex-1">{p.desc}</p>
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-cyan-glow">
+                    {p.tagline}
+                  </div>
+                  <h3 className="mt-1 font-display text-2xl font-bold">{p.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground flex-1">{p.desc}</p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.tags.slice(0, 4).map((t) => (
-                    <span key={t} className="text-[10px] uppercase tracking-widest font-mono px-2 py-1 rounded-full border border-white/10 bg-white/5">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {p.tags.slice(0, 4).map((t) => (
+                      <span key={t} className="text-[10px] uppercase tracking-widest font-mono px-2 py-1 rounded-full border border-white/10 bg-white/5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-cyan-glow group-hover:gap-3 transition-all">
+                    View Details <ArrowUpRight size={12} />
+                  </div>
                 </article>
               </MouseParallax>
             </Reveal>
@@ -169,7 +173,7 @@ export function Projects() {
             <div className="flex items-center gap-3 mb-1">
               <h3 className="font-display text-2xl sm:text-3xl font-bold">{selected.title}</h3>
             </div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--cyan-glow)] mb-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-cyan-glow mb-4">
               {selected.tagline}
             </div>
 
@@ -189,7 +193,7 @@ export function Projects() {
               <ul className="space-y-2">
                 {selected.details.features.map((f, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="text-[var(--cyan-glow)] mt-1">◆</span>
+                    <span className="text-cyan-glow mt-1">◆</span>
                     {f}
                   </li>
                 ))}
