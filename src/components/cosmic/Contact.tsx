@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useActionState, useEffect, useState, useRef } from "react";
 import { Reveal } from "./Reveal";
 import { MouseParallax } from "./MouseParallax";
-import { Send, Mail, MapPin, Github, Twitter, Linkedin } from "lucide-react";
+import { Send, Mail, MapPin, Github, Twitter, Linkedin, Loader2, Satellite, X } from "lucide-react";
+import { submitContact } from "@/app/actions/contact";
 
 function MediumIcon({ size = 16 }: { size?: number }) {
   return (
@@ -12,7 +13,16 @@ function MediumIcon({ size = 16 }: { size?: number }) {
 }
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [state, formAction, isPending] = useActionState(submitContact, null);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state && "success" in state) {
+      setShowSuccess(true);
+      formRef.current?.reset();
+    }
+  }, [state]);
 
   return (
     <section id="contact" className="relative py-32">
@@ -87,24 +97,22 @@ export function Contact() {
           <Reveal delay={100} className="lg:col-span-3">
             <MouseParallax factor={9}>
               <form
+                ref={formRef}
+                action={formAction}
                 className="card-cosmic h-full"
                 style={{ animation: "driftSway 9s ease-in-out infinite" }}
-                onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-                setTimeout(() => setSent(false), 3000);
-              }}
-            >
+              >
               <div className="grid sm:grid-cols-2 gap-4">
-                <Field label="Callsign" placeholder="Your name" />
-                <Field label="Frequency" placeholder="you@domain.com" type="email" />
+                <Field name="callsign" label="Callsign" placeholder="Your name" />
+                <Field name="frequency" label="Frequency" placeholder="you@domain.com" type="email" />
               </div>
               <div className="mt-4">
-                <Field label="Subject" placeholder="Mission briefing" />
+                <Field name="subject" label="Subject" placeholder="Mission briefing" />
               </div>
               <div className="mt-4">
                 <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Message</label>
                 <textarea
+                  name="message"
                   rows={5}
                   placeholder="Transmit your message..."
                   className="mt-2 w-full rounded-lg glass px-4 py-3 text-sm outline-none focus:border-[var(--cyan-glow)]/60 focus:shadow-[0_0_20px_-8px_var(--cyan-glow)] transition-all resize-none"
@@ -112,14 +120,17 @@ export function Contact() {
               </div>
               <div className="mt-6 flex items-center justify-between gap-4">
                 <div className="font-mono text-xs text-muted-foreground">
-                  {sent ? (
-                    <span className="text-[var(--cyan-glow)]">✓ Transmission received.</span>
+                  {state && "error" in state ? (
+                    <span className="text-red-400">{state.error}</span>
+                  ) : isPending ? (
+                    <span className="text-muted-foreground animate-pulse">Encoding transmission...</span>
                   ) : (
                     <>End-to-end encrypted · 256-bit</>
                   )}
                 </div>
-                <button type="submit" className="btn-neon">
-                  Transmit <Send size={14} />
+                <button type="submit" disabled={isPending} className="btn-neon disabled:opacity-50 disabled:pointer-events-none">
+                  {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+                  {isPending ? " Sending" : " Transmit"}
                 </button>
               </div>
               </form>
@@ -127,15 +138,51 @@ export function Contact() {
           </Reveal>
         </div>
       </div>
+
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-[300] flex items-center justify-center p-4"
+          onClick={(e) => { if (e.target === e.currentTarget) setShowSuccess(false); }}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowSuccess(false)} />
+          <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-[oklch(0.14_0.04_275/0.9)] backdrop-blur-xl p-8 shadow-2xl animate-in fade-in zoom-in-95 duration-200 text-center">
+            <button
+              onClick={() => setShowSuccess(false)}
+              className="absolute top-3 right-3 h-7 w-7 grid place-items-center rounded-full text-muted-foreground hover:text-white transition-colors"
+            >
+              <X size={14} />
+            </button>
+
+            <div className="mx-auto h-16 w-16 rounded-2xl bg-gradient-to-br from-[var(--cyan-glow)] to-[var(--neon-blue)] flex items-center justify-center mb-5">
+              <Satellite size={28} className="text-black" />
+            </div>
+
+            <h3 className="font-display text-2xl font-bold">Transmission Sent</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Your message is now drifting through the cosmic void toward its destination.
+              If your frequency reaches us, a response will be dispatched within 24 cycles.
+              Keep your eyes on the horizon.
+            </p>
+
+            <button
+              onClick={() => setShowSuccess(false)}
+              className="mt-6 btn-neon"
+            >
+              Acknowledge
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
 
-function Field({ label, placeholder, type = "text" }: { label: string; placeholder: string; type?: string }) {
+function Field({ name, label, placeholder, type = "text" }: { name: string; label: string; placeholder: string; type?: string }) {
   return (
     <label className="block">
       <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{label}</span>
       <input
+        name={name}
         type={type}
         placeholder={placeholder}
         className="mt-2 w-full rounded-lg glass px-4 py-3 text-sm outline-none focus:border-[var(--cyan-glow)]/60 focus:shadow-[0_0_20px_-8px_var(--cyan-glow)] transition-all"
