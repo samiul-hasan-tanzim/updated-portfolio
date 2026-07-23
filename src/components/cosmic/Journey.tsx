@@ -1,41 +1,55 @@
 import { Reveal } from "./Reveal";
-import { Briefcase, GraduationCap, Code } from "lucide-react";
+import { BookOpen, FileJson, Layers, Layout, Database, Rocket, Sparkles } from "lucide-react";
 
 const items = [
   {
-    icon: Briefcase,
-    year: "2024 — Now",
-    title: "Principal Engineer",
-    org: "Aurora Systems",
-    desc: "Leading the design-engineering guild. Shipped a WebGPU rendering pipeline that cut frame budgets by 60% across the product suite.",
+    icon: BookOpen,
+    year: "Month 1",
+    title: "Frontend Foundations",
+    org: "HTML5 · CSS3 · Git & GitHub",
+    desc: "Started with the building blocks of the web — HTML5 for structure and CSS3 for styling. Built responsive, accessible layouts and learned version control with Git and GitHub for collaborative development.",
   },
   {
-    icon: Briefcase,
-    year: "2022 — 2024",
-    title: "Senior Software Engineer",
-    org: "Nebula Labs",
-    desc: "Built the realtime collaboration engine powering 200k concurrent editors. Multi-cursor CRDT with sub-40ms latency.",
+    icon: FileJson,
+    year: "Month 2",
+    title: "JavaScript & Interactivity",
+    org: "JavaScript (ES6+) · DOM Manipulation · TypeScript",
+    desc: "Dived deep into JavaScript (ES6+), mastering core concepts like closures, promises, async/await, and DOM manipulation. Then leveled up with TypeScript for type-safe, maintainable code.",
   },
   {
-    icon: Code,
-    year: "2020 — 2022",
-    title: "Frontend Engineer",
-    org: "Voyager Studio",
-    desc: "Delivered 20+ award-winning marketing sites. Two FWAs, one Awwwards Site of the Year nomination.",
+    icon: Layers,
+    year: "Month 3",
+    title: "React & Component Architecture",
+    org: "React.js · Tailwind CSS · Responsive Design",
+    desc: "Learned React.js — component-based architecture, hooks, props, and state management. Combined with Tailwind CSS for rapid, utility-first styling and responsive design patterns.",
   },
   {
-    icon: GraduationCap,
-    year: "2018 — 2020",
-    title: "MSc, Human–Computer Interaction",
-    org: "ETH Zürich",
-    desc: "Thesis on physics-based motion in touch interfaces. Published at CHI '20.",
+    icon: Layout,
+    year: "Month 4",
+    title: "Next.js & State Management",
+    org: "Next.js (App Router) · Redux Toolkit · Zustand",
+    desc: "Explored Next.js with the App Router, understanding SSR, SSG, and route handlers. Managed complex application state with Redux Toolkit and Zustand for scalable state solutions.",
   },
   {
-    icon: GraduationCap,
-    year: "2014 — 2018",
-    title: "BSc, Computer Science",
-    org: "University of Tokyo",
-    desc: "Graduated top 3%. Research assistant in graphics lab; contributed to an open-source shader compiler.",
+    icon: Database,
+    year: "Month 5",
+    title: "Backend & Database",
+    org: "Node.js · Express.js · MongoDB · Auth",
+    desc: "Built REST APIs with Node.js and Express.js, connected to MongoDB for data persistence. Implemented authentication and authorization with JWT and Better Auth, including protected routes and RBAC.",
+  },
+  {
+    icon: Rocket,
+    year: "Month 6",
+    title: "Full Stack Integration & Deployment",
+    org: "API Integration · Vercel · Render · Netlify",
+    desc: "Integrated frontend with backend APIs, built Next.js route handlers, and deployed full-stack applications on Vercel, Render, and Netlify. Currently exploring AI-powered development and advanced Next.js patterns.",
+  },
+  {
+    icon: Sparkles,
+    year: "Currently Learning",
+    title: "Expanding the Stack",
+    org: "Angular · C# · .NET · ASP.NET",
+    desc: "Broadening my skills into the .NET ecosystem — learning Angular for frontend, C# as the core language, and .NET with ASP.NET for building robust, enterprise-grade backend applications.",
   },
 ];
 
@@ -45,9 +59,9 @@ export function Journey() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto">
-            <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--cyan-glow)]">// Trajectory</div>
+            <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--cyan-glow)]">// Journey</div>
             <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold">
-              A <span className="text-gradient">journey</span> through spacetime.
+              My <span className="text-gradient">learning path</span>.
             </h2>
           </div>
         </Reveal>

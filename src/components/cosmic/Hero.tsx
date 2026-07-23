@@ -34,23 +34,23 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            I'm <span className="text-white font-semibold">Nova Vega</span> — a full-stack engineer crafting cinematic, high-performance experiences at the edge of what browsers can do.
+            I'm <span className="text-white font-semibold">Samiul Hasan</span> — a MERN Stack and Next.js developer who loves turning complex problems into simple, beautiful, and intuitive web experiences.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="#work" className="btn-neon">
               Explore My Work <ArrowRight size={16} />
             </a>
-            <a href="#contact" className="btn-outline-neon">
+            <a href="https://drive.google.com/file/d/1UPS5CN1qI1zvrSodc4UBEUCCoFMANE83/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn-outline-neon">
               <Download size={16} /> Download CV
             </a>
           </div>
 
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
             {[
-              { n: "6+", l: "Years" },
-              { n: "40+", l: "Projects" },
-              { n: "12", l: "Awards" },
+              { n: "2+", l: "Years" },
+              { n: "15+", l: "Projects" },
+              { n: "10+", l: "Repos" },
             ].map((s) => (
               <div key={s.l}>
                 <div className="font-display text-3xl font-bold text-gradient">{s.n}</div>
@@ -86,14 +86,20 @@ export function Hero() {
 
           {/* Portrait */}
           <div className="relative h-72 w-72 sm:h-80 sm:w-80 rounded-full p-1 bg-gradient-to-br from-[var(--cyan-glow)] via-[var(--cosmic-purple)] to-[var(--nebula-pink)] shadow-[0_0_80px_-10px_var(--neon-blue)]">
-            <div className="h-full w-full rounded-full overflow-hidden border-2 border-black/50">
+            <div className="relative h-full w-full rounded-full overflow-hidden border-2 border-black/50">
               <img
-                src="/assets/hero-portrait.jpg"
-                alt="Nova Vega portrait"
+                src="https://i.ibb.co.com/LXkRtv93/252372637.png"
+                alt="Samiul Hasan portrait"
                 width={768}
                 height={768}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover brightness-85 contrast-135 saturate-[0.95]"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-[var(--cyan-glow)]/12 mix-blend-multiply pointer-events-none" />
+              <div className="absolute inset-0" style={{
+                backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,255,0.06) 2px, rgba(0,255,255,0.06) 4px)",
+                pointerEvents: "none",
+              }} />
+              <div className="absolute inset-0 rounded-full shadow-[inset_0_0_30px_rgba(0,0,0,0.35),inset_0_0_50px_rgba(0,255,255,0.06)] pointer-events-none" />
             </div>
           </div>
         </div>

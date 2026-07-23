@@ -2,6 +2,14 @@ import { useState } from "react";
 import { Reveal } from "./Reveal";
 import { Send, Mail, MapPin, Github, Twitter, Linkedin } from "lucide-react";
 
+function MediumIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13.54 12a6.54 6.54 0 1 1-13.08 0 6.54 6.54 0 0 1 13.08 0zM21.6 12a3.27 3.27 0 1 1-6.54 0 3.27 3.27 0 0 1 6.54 0zM24 12a1.63 1.63 0 1 1-3.26 0 1.63 1.63 0 0 1 3.26 0z" />
+    </svg>
+  );
+}
+
 export function Contact() {
   const [sent, setSent] = useState(false);
 
@@ -31,7 +39,7 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground">Email</div>
-                    <div className="font-mono text-sm">nova@vega.dev</div>
+                    <div className="font-mono text-sm">samiulhasan.dev@gmail.com</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -40,7 +48,7 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground">Location</div>
-                    <div className="font-mono text-sm">Tokyo / Berlin</div>
+                    <div className="font-mono text-sm">Bangladesh · Remote</div>
                   </div>
                 </div>
               </div>
@@ -48,12 +56,19 @@ export function Contact() {
               <div className="mt-8 pt-6 border-t border-white/10">
                 <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Uplinks</div>
                 <div className="mt-3 flex gap-3">
-                  {[Github, Twitter, Linkedin].map((Icon, i) => (
+                  {[
+                    { icon: Github, url: "https://github.com/samiul-hasan-tanzim", label: "GitHub" },
+                    { icon: Linkedin, url: "https://www.linkedin.com/in/samiul-hasan-tanzim", label: "LinkedIn" },
+                    { icon: MediumIcon, url: "https://medium.com/@samiulh_hasan", label: "Medium" },
+                    { icon: Twitter, url: "https://x.com/Samiul_Hasan911", label: "X (Twitter)" },
+                  ].map(({ icon: Icon, url, label }) => (
                     <a
-                      key={i}
-                      href="#"
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="h-11 w-11 grid place-items-center rounded-full glass hover:text-[var(--cyan-glow)] hover:shadow-[0_0_20px_-5px_var(--cyan-glow)] hover:border-[var(--cyan-glow)]/50 transition-all"
-                      aria-label="Social"
+                      aria-label={label}
                     >
                       <Icon size={16} />
                     </a>

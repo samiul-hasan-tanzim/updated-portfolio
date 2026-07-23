@@ -1,20 +1,20 @@
 import { Reveal } from "./Reveal";
 
 const skills = [
-  { name: "React / Next.js", level: 96, group: "Frontend" },
-  { name: "TypeScript", level: 94, group: "Language" },
-  { name: "WebGL / Three.js", level: 88, group: "3D" },
-  { name: "Node.js / Bun", level: 90, group: "Backend" },
-  { name: "Rust / WASM", level: 78, group: "Systems" },
-  { name: "Postgres / Redis", level: 85, group: "Data" },
-  { name: "Framer Motion / GSAP", level: 92, group: "Motion" },
-  { name: "AI / LLMs", level: 87, group: "ML" },
+  { name: "React.js / Next.js", level: 90, group: "Frontend" },
+  { name: "JavaScript (ES6+)", level: 88, group: "Language" },
+  { name: "TypeScript", level: 82, group: "Language" },
+  { name: "Tailwind CSS", level: 88, group: "Frontend" },
+  { name: "Node.js / Express.js", level: 85, group: "Backend" },
+  { name: "MongoDB", level: 80, group: "Database" },
+  { name: "Redux Toolkit", level: 78, group: "State Management" },
+  { name: "Git / GitHub", level: 75, group: "Tools" },
 ];
 
 const stack = [
-  "React", "Next.js", "TypeScript", "Three.js", "WebGPU", "Rust",
-  "Node.js", "Bun", "Postgres", "Redis", "GraphQL", "tRPC",
-  "Tailwind", "Motion", "Zustand", "Vitest", "Playwright", "Docker",
+  "HTML5", "CSS3", "JavaScript", "TypeScript", "React.js", "Next.js",
+  "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Redux Toolkit",
+  "JWT", "Better Auth", "Git", "GitHub", "Vercel", "Render", "Postman",
 ];
 
 export function Skills() {

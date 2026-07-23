@@ -47,7 +47,7 @@ export function Navbar() {
         >
           <a href="#home" className="flex items-center gap-2 font-display font-bold tracking-widest text-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-[var(--cyan-glow)] shadow-[0_0_10px_var(--cyan-glow)]" />
-            NOVA<span className="text-gradient">VEGA</span>
+            SAMIUL<span className="text-gradient">HASAN</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
